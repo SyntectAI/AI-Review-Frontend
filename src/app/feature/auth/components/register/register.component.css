@@ -1,0 +1,201 @@
+/* Register Form Container */
+.register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Ensure form elements work well within glassmorphic parent */
+.register-form mat-form-field {
+  width: 100%;
+}
+
+/* Additional styling for form elements to enhance glassmorphism effect */
+.register-form .mat-mdc-form-field {
+  margin-bottom: 0.5rem;
+}
+
+/* Form title or heading styling */
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* Error message styling within glassmorphic context */
+.register-form .error-message {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Success message styling within glassmorphic context */
+.register-form .success-message {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Validation error styling for individual fields */
+.register-form .field-error {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Loading state styling */
+.register-form .loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+
+/* Form footer with additional links */
+.register-form .form-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-form .form-footer a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.register-form .form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Password strength indicator styling */
+.register-form .password-strength {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.register-form .password-strength.weak {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register-form .password-strength.medium {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register-form .password-strength.strong {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Terms and conditions checkbox styling */
+.register-form .terms-section {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.register-form .terms-section mat-checkbox {
+  margin-bottom: 0.5rem;
+}
+
+.register-form .terms-section .terms-text {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.register-form .terms-section .terms-text a {
+  text-decoration: none;
+}
+
+.register-form .terms-section .terms-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .register-form h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .register-form .form-footer {
+    font-size: 0.8rem;
+  }
+  
+  .register-form .terms-section {
+    padding: 0.75rem;
+  }
+  
+  .register-form .terms-section .terms-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .register-form .terms-section {
+    padding: 0.5rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .register-form .error-message {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .register-form .success-message {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .register-form .terms-section {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .register-form .password-strength {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .register-form .form-footer a {
+    transition: none;
+  }
+  
+  .register-form .terms-section .terms-text a {
+    transition: none;
+  }
+}

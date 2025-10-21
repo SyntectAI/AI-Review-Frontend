@@ -1,0 +1,25 @@
+<form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Register</h2>
+    <mat-form-field>
+        <input formControlName="loginFormControl" matInput placeholder="Login" type="text"
+            [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="emailFormControl" matInput placeholder="Email" type="email"
+            [errorStateMatcher]="matcher">
+        @if (emailFormControl?.hasError('email') && !emailFormControl?.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl?.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="passwordFormControl" matInput placeholder="Password" type="password"
+            [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <button matButton="elevated" type="submit" [disabled]="!registerForm.valid">Register</button>
+    <div class="form-footer">
+        <a href="#" (click)="switchToLoginForm()">Already have an account? Login</a>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+<div class="auth-card-container">
+  <div class="auth-card">
+    <div class="auth-card-content">
+      @if (currentForm === 'register') {
+        <app-register (switchEvent)="switchEventHandler($event)"/>
+      } @else {
+        <app-login (switchEvent)="switchEventHandler($event)"/>
+      }
+    </div>
+  </div>
+</div>

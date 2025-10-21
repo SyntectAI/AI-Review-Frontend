@@ -47,12 +47,6 @@ module.exports = tseslint.config(
       '@typescript-eslint/consistent-type-assertions': 'warn',
       '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
       '@typescript-eslint/explicit-function-return-type': 'error',
-      '@typescript-eslint/explicit-member-accessibility': [
-        'error',
-        {
-          accessibility: 'no-public',
-        },
-      ],
       '@typescript-eslint/naming-convention': [
         'warn',
         {
@@ -76,8 +70,8 @@ module.exports = tseslint.config(
       'max-len': [
         'warn',
         {
-          code: 120,
-          comments: 160,
+          code: 200,
+          comments: 200,
         },
       ],
       'max-lines': ['error', 400], // my favorite rule to keep files small

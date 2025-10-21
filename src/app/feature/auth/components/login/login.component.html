@@ -1,0 +1,15 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
+    <mat-form-field>
+        <input formControlName="loginFormControl" matInput placeholder="Login" type="text"
+            [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="passwordFormControl" matInput placeholder="Password" type="password"
+            [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <button matButton="elevated" type="submit" [disabled]="!loginForm.valid">Login</button>
+    <div class="form-footer">
+        <a href="#" (click)="switchToRegisterForm()">Don't have an account? Register</a>
+    </div>
+</form>
