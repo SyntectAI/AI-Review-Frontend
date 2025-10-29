@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, output } from "@angular/core";
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MyErrorStateMatcher } from "../../models/auth.model";
+import { Router } from "@angular/router";
+import { LoginRequest, MyErrorStateMatcher } from "../../models/auth.model";
+import { AuthService } from "../../../../core/services/auth.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-
-
 
 @Component({
     selector: 'app-login',
@@ -15,19 +15,54 @@ import { MatInputModule } from "@angular/material/input";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
-        public switchEvent = output<{ formname: string }>();
-        public readonly matcher = new MyErrorStateMatcher();
-    
+    public readonly switchEvent = output<{ formname: string }>();
+    public readonly matcher = new MyErrorStateMatcher();
+    private readonly authService = inject(AuthService);
+    private readonly router = inject(Router);
+
     public readonly loginForm = new FormGroup({
-        loginFormControl: new FormControl(),
-        passwordFormControl: new FormControl(),
-    })
+        loginFormControl: new FormControl('', [Validators.required, Validators.email]),
+        passwordFormControl: new FormControl('', [Validators.required]),
+    });
 
     public switchToRegisterForm(): void {
-        this.switchEvent.emit({ formname: 'register' })
+        this.switchEvent.emit({ formname: 'register' });
     }
 
     public onSubmit(): void {
-        console.log(this.loginForm.getRawValue())
+        if (this.loginForm.valid) {
+            const credentials: LoginRequest = {
+                login: this.loginForm.value.loginFormControl || '',
+                password: this.loginForm.value.passwordFormControl || ''
+            };
+
+            this.authService.login(credentials).subscribe({
+                next: (response) => {
+                    console.log('Login successful:', response);
+                    // Redirect to dashboard or intended URL
+                    const returnUrl = this.router.getCurrentNavigation()?.finalUrl?.toString() || '/dashboard';
+                    this.router.navigate([returnUrl]);
+                },
+                error: (error) => {
+                    console.error('Login failed:', error);
+                    // Handle error (show message to user)
+                    this.loginForm.setErrors({ invalidCredentials: true });
+                }
+            });
+        } else {
+            // Mark all fields as touched to trigger validation messages
+            Object.keys(this.loginForm.controls).forEach(key => {
+                const control = this.loginForm.get(key);
+                control?.markAsTouched();
+            });
+        }
+    }
+
+    get loginFormControl(): AbstractControl<string | null, string | null, unknown> | null {
+        return this.loginForm.get('loginFormControl');
+    }
+
+    get passwordFormControl(): AbstractControl<string | null, string | null, unknown> | null {
+        return this.loginForm.get('passwordFormControl');
     }
 }

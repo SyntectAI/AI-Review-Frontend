@@ -1,0 +1,162 @@
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}
+
+.toolbar-button {
+  color: white;
+  margin-left: 8px;
+}
+
+.toolbar-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-content {
+  display: flex;
+  margin-top: 64px;
+  height: calc(100vh - 64px);
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #fafafa;
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 280px;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 64px;
+}
+
+/* Material Design adjustments */
+.mat-mdc-toolbar {
+  background-color: #1976d2;
+}
+
+.mat-mdc-icon-button {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+}
+
+.mat-mdc-icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-toolbar {
+    padding: 0 12px;
+  }
+  
+  .toolbar-title {
+    font-size: 16px;
+  }
+  
+  .toolbar-button {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    margin-left: 6px;
+  }
+  
+  .main-content {
+    padding: 16px;
+    margin-left: 0;
+  }
+  
+  .main-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-toolbar {
+    padding: 0 8px;
+  }
+  
+  .toolbar-title {
+    font-size: 14px;
+  }
+  
+  .toolbar-button {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    margin-left: 4px;
+  }
+  
+  .main-content {
+    padding: 12px;
+  }
+}
+
+/* Scrollbar styling */
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Focus styles for accessibility */
+.toolbar-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Animation for content transition */
+.main-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
