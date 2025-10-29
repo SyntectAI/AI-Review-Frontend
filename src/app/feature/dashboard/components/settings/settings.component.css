@@ -1,0 +1,154 @@
+.settings-container {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.construction-card {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card-header mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #ff9800;
+  margin-bottom: 16px;
+}
+
+.card-header .mat-mdc-card-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.card-content {
+  padding: 0;
+}
+
+.construction-message h2 {
+  color: #666;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.construction-message p {
+  color: #777;
+  font-size: 16px;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+.feature-preview {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 24px;
+  border-radius: 8px;
+  text-align: left;
+  margin-top: 24px;
+}
+
+.feature-preview h3 {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.feature-preview h3::before {
+  content: '🚀';
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.feature-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-preview li {
+  padding: 8px 0;
+  color: #555;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.feature-preview li:last-child {
+  border-bottom: none;
+}
+
+.feature-preview li::before {
+  content: '✓';
+  color: #4caf50;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 16px;
+  }
+  
+  .construction-card {
+    padding: 24px 16px;
+  }
+  
+  .card-header .mat-mdc-card-title {
+    font-size: 24px;
+  }
+  
+  .construction-message h2 {
+    font-size: 20px;
+  }
+  
+  .feature-preview {
+    padding: 16px;
+  }
+}
+
+/* Material Design adjustments */
+.mat-mdc-card {
+  border-radius: 12px;
+}
+
+.mat-mdc-card-header {
+  padding: 0;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
+
+/* Animation for construction icon */
+.card-header mat-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

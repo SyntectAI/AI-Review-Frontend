@@ -1,0 +1,222 @@
+.documentation-container {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.construction-card {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.card-header {
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card-header mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #ffd54f;
+  margin-bottom: 16px;
+}
+
+.card-header .mat-mdc-card-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.card-content {
+  padding: 0;
+}
+
+.construction-message h2 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.construction-message p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+.feature-preview {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  border-radius: 8px;
+  text-align: left;
+  margin-top: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.feature-preview h3 {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.feature-preview h3::before {
+  content: '📚';
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.feature-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-preview li {
+  padding: 8px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-preview li:last-child {
+  border-bottom: none;
+}
+
+.feature-preview li::before {
+  content: '📄';
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+.help-section {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 24px;
+  border-radius: 8px;
+  margin-top: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.help-section h3 {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.help-section h3::before {
+  content: '❓';
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.help-section p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.quick-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.help-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+
+.help-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.help-btn mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .documentation-container {
+    padding: 16px;
+  }
+  
+  .construction-card {
+    padding: 24px 16px;
+  }
+  
+  .card-header .mat-mdc-card-title {
+    font-size: 24px;
+  }
+  
+  .construction-message h2 {
+    font-size: 20px;
+  }
+  
+  .feature-preview,
+  .help-section {
+    padding: 16px;
+  }
+  
+  .quick-links {
+    gap: 12px;
+  }
+  
+  .help-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Material Design adjustments */
+.mat-mdc-card {
+  border-radius: 12px;
+}
+
+.mat-mdc-card-header {
+  padding: 0;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
+
+.mat-mdc-icon-button {
+  border-radius: 50%;
+}
+
+/* Animation for documentation icon */
+.card-header mat-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

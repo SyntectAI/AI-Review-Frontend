@@ -1,0 +1,45 @@
+<div [class]="getSidebarClass()">
+  <!-- Toggle Button -->
+  <div class="sidebar-header">
+    <button 
+      class="toggle-btn"
+      mat-icon-button
+      [attr.aria-label]="isCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
+      (click)="toggleSidebar()"
+    >
+      <mat-icon>{{ isCollapsed() ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+    
+    @if (!isCollapsed()) {
+      <h3 class="sidebar-title">Menu</h3>
+    }
+  </div>
+
+  <!-- Navigation Menu -->
+  <mat-nav-list class="menu-list">
+    @for (item of menuItems; track item.id) {
+      <a 
+        #rla="routerLinkActive"
+        class="menu-item"
+        mat-list-item
+        routerLinkActive="active"
+        [attr.aria-current]="rla.isActive ? 'page' : null"
+        [class.active]="rla.isActive"
+        [routerLink]="item.route"
+        (click)="selectSection(item.id)"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        @if (!isCollapsed()) {
+          <span matListItemTitle>{{ item.label }}</span>
+        }
+      </a>
+    }
+  </mat-nav-list>
+
+  <!-- Footer (when expanded) -->
+  @if (!isCollapsed()) {
+    <div class="sidebar-footer">
+      <p class="footer-text">AI Review Dashboard</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,276 @@
+.project-setup-container {
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+}
+
+.card-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 24px;
+}
+
+.card-header .mat-mdc-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.card-header .mat-mdc-card-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.card-content {
+  padding: 24px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+}
+
+.loading-container p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #1976d2;
+  display: inline-block;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.textarea-field .mat-mdc-form-field-flex {
+  align-items: flex-start;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 32px;
+}
+
+.reset-btn {
+  color: #666;
+  border-color: #ddd;
+}
+
+.reset-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.save-btn {
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.save-btn mat-progress-spinner {
+  margin-right: 8px;
+}
+
+/* Material Design adjustments */
+.mat-mdc-card {
+  border-radius: 12px;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-outline {
+  border-radius: 8px;
+}
+
+.mat-mdc-select-value {
+  font-size: 14px;
+}
+
+.mat-mdc-option {
+  font-size: 14px;
+}
+
+.mat-mdc-input-element {
+  font-size: 14px;
+}
+
+.mat-mdc-text-area-wrapper {
+  font-size: 14px;
+}
+
+/* Error states */
+.mat-mdc-form-field-invalid .mat-mdc-form-field-outline {
+  border-color: #f44336;
+}
+
+.mat-mdc-form-field-invalid .mat-mdc-form-field-label {
+  color: #f44336;
+}
+
+.mat-mdc-error {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Character count hints */
+.mat-mdc-hint {
+  font-size: 12px;
+  color: #666;
+}
+
+.mat-mdc-form-field-hint-end {
+  text-align: right;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-setup-container {
+    padding: 16px;
+  }
+  
+  .card-header,
+  .card-content {
+    padding: 16px;
+  }
+  
+  .project-form {
+    gap: 24px;
+  }
+  
+  .form-section {
+    gap: 16px;
+  }
+  
+  .section-title {
+    font-size: 16px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .reset-btn,
+  .save-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-header .mat-mdc-card-title {
+    font-size: 20px;
+  }
+  
+  .section-title {
+    font-size: 14px;
+  }
+  
+  .form-actions {
+    gap: 12px;
+  }
+}
+
+/* Animation for form validation */
+.mat-mdc-form-field {
+  transition: all 0.3s ease;
+}
+
+.mat-mdc-form-field:hover .mat-mdc-form-field-outline {
+  border-color: #1976d2;
+}
+
+.mat-mdc-form-field-invalid:hover .mat-mdc-form-field-outline {
+  border-color: #f44336;
+}
+
+/* Focus styles */
+.mat-mdc-form-field-focus .mat-mdc-form-field-outline {
+  border-color: #1976d2;
+  border-width: 2px;
+}
+
+/* Loading state */
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Password field visibility toggle */
+.mat-mdc-icon-button {
+  color: #666;
+  padding: 8px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.mat-mdc-icon-button:hover {
+  color: #1976d2;
+  background-color: rgba(25, 118, 210, 0.04);
+}
+
+/* Password field with suffix button */
+.mat-mdc-form-field-with-suffix .mat-mdc-text-field-wrapper {
+  padding-right: 48px;
+}
+
+.mat-mdc-form-field-suffix {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Select dropdown styling */
+.mat-mdc-select-panel {
+  border-radius: 8px;
+  margin-top: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Textarea specific styling */
+.mat-mdc-text-area-wrapper textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-outline-thick {
+  color: #1976d2;
+}

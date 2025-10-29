@@ -7,3 +7,33 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+
+// Auth interfaces and types
+export interface LoginRequest {
+  login: string;
+  password: string;
+}
+
+export interface RegisterRequest {
+  email: string;
+  login: string;
+  password: string;
+}
+
+export interface AuthResponse {
+  token: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  login: string;
+}
+
+export interface AuthState {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+}

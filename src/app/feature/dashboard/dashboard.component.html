@@ -1,0 +1,25 @@
+<div class="dashboard-layout">
+  <!-- Top Toolbar -->
+  <mat-toolbar class="dashboard-toolbar" color="primary">
+    <span class="spacer"></span>
+    <span class="toolbar-title">AI Review Dashboard</span>
+    <span class="spacer"></span>
+    <button class="toolbar-button" mat-icon-button type="button" (click)="navigateToProfile()">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button class="toolbar-button" mat-icon-button type="button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <!-- Main Content Area -->
+  <div class="dashboard-content">
+    <!-- Sidebar -->
+    <app-sidebar (sidebarToggle)="onSidebarToggle($event)" />
+
+    <!-- Content Area -->
+    <main class="main-content" [class.sidebar-collapsed]="isSidebarCollapsed">
+      <router-outlet />
+    </main>
+  </div>
+</div>

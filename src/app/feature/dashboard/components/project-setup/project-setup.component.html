@@ -1,0 +1,152 @@
+<div class="project-setup-container">
+  <mat-card class="form-card">
+    <mat-card-header class="card-header">
+      <mat-card-title>Project Setup</mat-card-title>
+      <mat-card-subtitle>Configure your AI review project settings</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="card-content">
+      @if (isLoading()) {
+        <div class="loading-container">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+          <p>Loading configuration...</p>
+        </div>
+      } @else {
+        <form class="project-form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+          <!-- Basic Information Section -->
+          <div class="form-section">
+            <h3 class="section-title">Basic Information</h3>
+            
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Project Name *</mat-label>
+              <input formControlName="name" matInput placeholder="Enter project name">
+              @if (isFieldInvalid('name')) {
+                <mat-error>{{ getErrorMessage('name') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Model *</mat-label>
+              <input formControlName="model" matInput placeholder="e.g., gpt-4, claude-3">
+              @if (isFieldInvalid('model')) {
+                <mat-error>{{ getErrorMessage('model') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Temperature</mat-label>
+              <mat-select formControlName="temperature">
+                @for (option of temperatureOptions; track option.value) {
+                  <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                }
+              </mat-select>
+              @if (isFieldInvalid('temperature')) {
+                <mat-error>{{ getErrorMessage('temperature') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- API Configuration Section -->
+          <div class="form-section">
+            <h3 class="section-title">API Configuration</h3>
+            
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>GitHub Token *</mat-label>
+              <input formControlName="githubToken" matInput placeholder="Enter your GitHub token" [type]="getPasswordType('githubToken')">
+              <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility('githubToken')">
+                <mat-icon>{{ getPasswordIcon('githubToken') }}</mat-icon>
+              </button>
+              @if (isFieldInvalid('githubToken')) {
+                <mat-error>{{ getErrorMessage('githubToken') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>LLM API Token *</mat-label>
+              <input formControlName="llmApiToken" matInput placeholder="Enter your LLM API token" [type]="getPasswordType('llmApiToken')">
+              <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility('llmApiToken')">
+                <mat-icon>{{ getPasswordIcon('llmApiToken') }}</mat-icon>
+              </button>
+              @if (isFieldInvalid('llmApiToken')) {
+                <mat-error>{{ getErrorMessage('llmApiToken') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>LLM Source URL *</mat-label>
+              <input formControlName="llmSourceUrl" matInput placeholder="https://api.openai.com/v1">
+              @if (isFieldInvalid('llmSourceUrl')) {
+                <mat-error>{{ getErrorMessage('llmSourceUrl') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- Instructions Section -->
+          <div class="form-section">
+            <h3 class="section-title">Instructions</h3>
+            
+            <mat-form-field appearance="outline" class="form-field textarea-field">
+              <mat-label>Instruction</mat-label>
+              <textarea 
+                formControlName="instruction" 
+                matInput 
+                placeholder="Enter review instructions (optional)"
+                rows="4"
+                [maxlength]="getCharacterLimit('instruction')"
+              ></textarea>
+              <mat-hint align="end">
+                {{ getCharacterCount('instruction') }} / {{ getCharacterLimit('instruction') }} characters
+              </mat-hint>
+              @if (isFieldInvalid('instruction')) {
+                <mat-error>{{ getErrorMessage('instruction') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field textarea-field">
+              <mat-label>Prompt</mat-label>
+              <textarea 
+                formControlName="prompt" 
+                matInput 
+                placeholder="Enter custom prompt (optional)"
+                rows="6"
+                [maxlength]="getCharacterLimit('prompt')"
+              ></textarea>
+              <mat-hint align="end">
+                {{ getCharacterCount('prompt') }} / {{ getCharacterLimit('prompt') }} characters
+              </mat-hint>
+              @if (isFieldInvalid('prompt')) {
+                <mat-error>{{ getErrorMessage('prompt') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="form-actions">
+            <button 
+              class="reset-btn"
+              mat-button 
+              type="button" 
+              (click)="resetForm()"
+            >
+              Reset
+            </button>
+            <button 
+              class="save-btn"
+              color="primary"
+              mat-raised-button 
+              type="submit" 
+              [disabled]="projectForm.invalid || isSaving()"
+            >
+              @if (isSaving()) {
+                <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+                <span>Saving...</span>
+              } @else {
+                <span>Save Configuration</span>
+              }
+            </button>
+          </div>
+        </form>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>
