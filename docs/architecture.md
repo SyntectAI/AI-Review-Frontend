@@ -64,7 +64,6 @@ src/
 auth/
 ├── components/
 │   ├── login/
-│   ├── register/
 │   └── reset-password/
 ├── services/
 │   ├── auth.service.ts

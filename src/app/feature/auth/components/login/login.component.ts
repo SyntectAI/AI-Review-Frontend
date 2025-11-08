@@ -15,19 +15,14 @@ import { MatInputModule } from "@angular/material/input";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
-    public readonly switchEvent = output<{ formname: string }>();
     public readonly matcher = new MyErrorStateMatcher();
     private readonly authService = inject(AuthService);
     private readonly router = inject(Router);
 
     public readonly loginForm = new FormGroup({
-        loginFormControl: new FormControl('', [Validators.required, Validators.email]),
-        passwordFormControl: new FormControl('', [Validators.required]),
+        loginFormControl: new FormControl('admin', [Validators.required]),
+        passwordFormControl: new FormControl('admin', [Validators.required]),
     });
-
-    public switchToRegisterForm(): void {
-        this.switchEvent.emit({ formname: 'register' });
-    }
 
     public onSubmit(): void {
         if (this.loginForm.valid) {
@@ -45,8 +40,6 @@ export class LoginComponent {
                 },
                 error: (error) => {
                     console.error('Login failed:', error);
-                    // Handle error (show message to user)
-                    this.loginForm.setErrors({ invalidCredentials: true });
                 }
             });
         } else {
