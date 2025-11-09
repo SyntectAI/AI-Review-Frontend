@@ -2,7 +2,8 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { AuthResponse, AuthState, LoginRequest, RegisterRequest, User } from '../../feature/auth/models/auth.model';
+import { AuthResponse, AuthState, LoginRequest, User } from '../../feature/auth/models/auth.model';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService {
   private readonly TOKEN_KEY = 'auth_token';
   private readonly USER_KEY = 'auth_user';
   private readonly router = inject(Router);
+  private readonly apiService = inject(ApiService);
 
   // Signals for reactive state management
   private readonly user = signal<User | null>(null);
@@ -58,26 +60,11 @@ export class AuthService {
     localStorage.removeItem(this.USER_KEY);
   }
 
-  login(credentials: LoginRequest): Observable<AuthResponse> {
+  public login(credentials: LoginRequest): Observable<AuthResponse> {
     this.isLoading.set(true);
 
     // Simulate API call - replace with actual API call
-    return this.mockLoginApi(credentials).pipe(
-      delay(1000), // Simulate network delay
-      map(response => {
-        this.setAuthData(response);
-        this.isLoading.set(false);
-        return response;
-      })
-    );
-  }
-
-  register(data: RegisterRequest): Observable<AuthResponse> {
-    this.isLoading.set(true);
-
-    // Simulate API call - replace with actual API call
-    return this.mockRegisterApi(data).pipe(
-      delay(1000), // Simulate network delay
+    return this.apiService.login(credentials).pipe(
       map(response => {
         this.setAuthData(response);
         this.isLoading.set(false);
@@ -99,35 +86,5 @@ export class AuthService {
 
   getCurrentUser(): User | null {
     return this.user();
-  }
-
-  private mockLoginApi(credentials: LoginRequest): Observable<AuthResponse> {
-    // Mock authentication - replace with real API call
-    if (credentials.login === 'demo@example.com' && credentials.password === 'password') {
-      const mockResponse: AuthResponse = {
-        token: 'mock-jwt-token-' + Date.now(),
-        user: {
-          id: '1',
-          email: 'demo@example.com',
-          login: credentials.login
-        }
-      };
-      return of(mockResponse);
-    } else {
-      return throwError(() => new Error('Invalid credentials'));
-    }
-  }
-
-  private mockRegisterApi(data: RegisterRequest): Observable<AuthResponse> {
-    // Mock registration - replace with real API call
-    const mockResponse: AuthResponse = {
-      token: 'mock-jwt-token-' + Date.now(),
-      user: {
-        id: '2',
-        email: data.email,
-        login: data.login
-      }
-    };
-    return of(mockResponse);
   }
 }

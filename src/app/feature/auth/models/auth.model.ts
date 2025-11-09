@@ -14,12 +14,6 @@ export interface LoginRequest {
   password: string;
 }
 
-export interface RegisterRequest {
-  email: string;
-  login: string;
-  password: string;
-}
-
 export interface AuthResponse {
   token: string;
   user: User;
@@ -27,7 +21,6 @@ export interface AuthResponse {
 
 export interface User {
   id: string;
-  email: string;
   login: string;
 }
 
